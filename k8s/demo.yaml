@@ -114,6 +114,14 @@ spec:
           image: microprograms/spring-cloud-starter-kubernetes-demo:1.0.2
           ports:
             - containerPort: 8080
+          env:
+            # - name: SPRING_PROFILES_ACTIVE
+            #   value: production
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: spring-cloud-starter-kubernetes-demo
+                  key: spring.profiles.active
 
 ---
 apiVersion: v1
@@ -122,15 +130,17 @@ metadata:
   namespace: default
   name: spring-cloud-starter-kubernetes-demo
 data:
+  spring.profiles.active: development
   application.yaml: |-
     management:
       endpoints:
         web:
           exposure:
-            include: *
+            include: "*"
       endpoint:
         health:
           show-details: always
+
     demo:
       staticHostname: k8s-master-default-v1.0.2
       iconName: computer-vm
