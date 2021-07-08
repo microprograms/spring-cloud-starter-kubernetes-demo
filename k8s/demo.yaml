@@ -1,5 +1,12 @@
-kind: Role
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  namespace: default
+  name: spring-cloud-kubernetes-configuration-watcher
+
+---
 apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
 metadata:
   namespace: default
   name: namespace-reader
@@ -9,14 +16,14 @@ rules:
     verbs: ["get", "list", "watch"]
 
 ---
-kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
 metadata:
   namespace: default
-  name: namespace-reader-binding
+  name: spring-cloud-kubernetes-configuration-watcher:view
 subjects:
   - kind: ServiceAccount
-    name: default
+    name: spring-cloud-kubernetes-configuration-watcher
     apiGroup: ""
 roleRef:
   kind: Role
@@ -56,9 +63,10 @@ spec:
       labels:
         app: spring-cloud-starter-kubernetes-demo
     spec:
+      serviceAccount: spring-cloud-kubernetes-configuration-watcher
       containers:
         - name: spring-cloud-starter-kubernetes-demo
-          image: microprograms/spring-cloud-starter-kubernetes-demo:1.0.1
+          image: microprograms/spring-cloud-starter-kubernetes-demo:1.0.2
           ports:
             - containerPort: 8080
 
