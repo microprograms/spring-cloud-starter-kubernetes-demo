@@ -1,12 +1,6 @@
 spring:
   application:
     name: spring-cloud-starter-kubernetes-demo
-  # cloud:
-  #   kubernetes:
-  #     discovery:
-  #       all-namespaces: true
-  #     config:
-  #       namespace: default
 
 demo:
   staticHostname: k8s-master

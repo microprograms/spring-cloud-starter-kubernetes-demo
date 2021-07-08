@@ -58,7 +58,7 @@ spec:
     spec:
       containers:
         - name: spring-cloud-starter-kubernetes-demo
-          image: microprograms/spring-cloud-starter-kubernetes-demo:1.0.0
+          image: microprograms/spring-cloud-starter-kubernetes-demo:1.0.1
           ports:
             - containerPort: 8080
 
@@ -71,7 +71,7 @@ metadata:
 data:
   application.yaml: |-
     demo:
-      staticHostname: k8s-master-default
+      staticHostname: k8s-master-default-v1.0.2
       iconName: computer-vm
       chassis: vm
       machineId: 60943b8b8b72471c82b7e50337e0ab9e
