@@ -130,7 +130,7 @@ metadata:
   namespace: default
   name: spring-cloud-starter-kubernetes-demo
 data:
-  spring.profiles.active: development
+  spring.profiles.active: production
   application.yaml: |-
     management:
       endpoints:
