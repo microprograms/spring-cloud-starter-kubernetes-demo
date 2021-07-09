@@ -1,2 +1,2 @@
-customizedName: spring-cloud-starter-kubernetes-demo
-serviceAccount: spring-cloud-kubernetes-configuration-watcher
+image: microprograms/spring-cloud-starter-kubernetes-demo:1.0.2
+nodePort: 30808

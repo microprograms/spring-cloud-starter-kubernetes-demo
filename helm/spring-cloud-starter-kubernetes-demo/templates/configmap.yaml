@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Values.customizedName }}
+  name: spring-cloud-starter-kubernetes-demo
 data:
   spring.profiles.active: production
   application.yaml: |-
