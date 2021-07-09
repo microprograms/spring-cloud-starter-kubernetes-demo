@@ -1,0 +1,58 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: default
+  name: spring-cloud-starter-kubernetes-demo
+data:
+  spring.profiles.active: production
+  application.yaml: |-
+    management:
+      endpoints:
+        web:
+          exposure:
+            include: "*"
+      endpoint:
+        health:
+          show-details: always
+
+    demo:
+      staticHostname: k8s-master-default-v1.0.2
+      iconName: computer-vm
+      chassis: vm
+      machineId: 60943b8b8b72471c82b7e50337e0ab9e
+      bootId: d5e57a99d1f64214a53f7954567ebf00
+      virtualization: vmware
+      operatingSystem: CentOS Linux 7 (Core)
+      cpeOsName: cpe:/o:centos:centos:7
+      kernel: Linux 4.4.220-1.el7.elrepo.x86_64
+      architecture: x86-64
+
+    ---
+    spring:
+      profiles: development
+    demo:
+      staticHostname: k8s-master-development
+      iconName: computer-vm
+      chassis: vm
+      machineId: 60943b8b8b72471c82b7e50337e0ab9e
+      bootId: d5e57a99d1f64214a53f7954567ebf00
+      virtualization: vmware
+      operatingSystem: CentOS Linux 7 (Core)
+      cpeOsName: cpe:/o:centos:centos:7
+      kernel: Linux 4.4.220-1.el7.elrepo.x86_64
+      architecture: x86-64
+
+    ---
+    spring:
+      profiles: production
+    demo:
+      staticHostname: k8s-master-production
+      iconName: computer-vm
+      chassis: vm
+      machineId: 60943b8b8b72471c82b7e50337e0ab9e
+      bootId: d5e57a99d1f64214a53f7954567ebf00
+      virtualization: vmware
+      operatingSystem: CentOS Linux 7 (Core)
+      cpeOsName: cpe:/o:centos:centos:7
+      kernel: Linux 4.4.220-1.el7.elrepo.x86_64
+      architecture: x86-64
