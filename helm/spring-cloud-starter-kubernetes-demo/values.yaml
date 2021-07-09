@@ -1,0 +1,2 @@
+customizedName: spring-cloud-starter-kubernetes-demo
+serviceAccount: spring-cloud-kubernetes-configuration-watcher

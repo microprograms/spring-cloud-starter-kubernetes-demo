@@ -1,31 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: default
-  name: spring-cloud-starter-kubernetes-demo
+  name: {{ .Values.customizedName }}
   labels:
-    app: spring-cloud-starter-kubernetes-demo
+    app: {{ .Values.customizedName }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: spring-cloud-starter-kubernetes-demo
+      app: {{ .Values.customizedName }}
   template:
     metadata:
       labels:
-        app: spring-cloud-starter-kubernetes-demo
+        app: {{ .Values.customizedName }}
     spec:
-      serviceAccount: spring-cloud-kubernetes-configuration-watcher
+      serviceAccount: {{ .Values.serviceAccount }}
       containers:
-        - name: spring-cloud-starter-kubernetes-demo
+        - name: {{ .Values.customizedName }}
           image: microprograms/spring-cloud-starter-kubernetes-demo:1.0.2
           ports:
             - containerPort: 8080
           env:
-            # - name: SPRING_PROFILES_ACTIVE
-            #   value: production
             - name: SPRING_PROFILES_ACTIVE
               valueFrom:
                 configMapKeyRef:
-                  name: spring-cloud-starter-kubernetes-demo
+                  name: {{ .Values.customizedName }}
                   key: spring.profiles.active
