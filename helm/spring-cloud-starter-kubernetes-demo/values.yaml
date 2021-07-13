@@ -1,2 +1,2 @@
-image: microprograms/spring-cloud-starter-kubernetes-demo:1.0.2
-nodePort: 30808
+LoadBalancer:
+  port: 80

@@ -15,7 +15,7 @@ data:
           show-details: always
 
     demo:
-      staticHostname: k8s-master-default-v1.0.2
+      staticHostname: k8s-master-default
       iconName: computer-vm
       chassis: vm
       machineId: 60943b8b8b72471c82b7e50337e0ab9e
