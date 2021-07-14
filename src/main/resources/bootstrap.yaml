@@ -1,0 +1,10 @@
+# 代码中只保留最少的配置项，通过k8s ConfigMap配置
+spring:
+  application:
+    name: spring-cloud-starter-kubernetes-demo
+  cloud:
+    kubernetes:
+      config:
+        sources:
+          - name: common-config
+          - name: spring-cloud-starter-kubernetes-demo
