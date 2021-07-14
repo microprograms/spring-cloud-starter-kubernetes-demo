@@ -1,3 +1,4 @@
+# 应用程序配置
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -5,6 +6,7 @@ metadata:
 data:
   spring.profiles.active: {{ .Values.spring.profiles.active }}
   application.yaml: |-
+    # 应用程序的默认配置，第二优先级
     management:
       endpoints:
         web:
@@ -27,6 +29,7 @@ data:
       architecture: x86-64
 
     ---
+    # 应用程序的特定的profile的配置，第一优先级
     spring:
       profiles: development
     demo:
@@ -46,6 +49,58 @@ data:
       profiles: production
     demo:
       staticHostname: k8s-master-production
+      iconName: computer-vm
+      chassis: vm
+      machineId: 60943b8b8b72471c82b7e50337e0ab9e
+      bootId: d5e57a99d1f64214a53f7954567ebf00
+      virtualization: vmware
+      operatingSystem: CentOS Linux 7 (Core)
+      cpeOsName: cpe:/o:centos:centos:7
+      kernel: Linux 4.4.220-1.el7.elrepo.x86_64
+      architecture: x86-64
+
+---
+# 通用配置
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: common-config
+data:
+  application.yaml: |-
+    # 通用配置的默认配置，第四优先级
+    demo:
+      staticHostname: k8s-master-common-config-default
+      iconName: computer-vm
+      chassis: vm
+      machineId: 60943b8b8b72471c82b7e50337e0ab9e
+      bootId: d5e57a99d1f64214a53f7954567ebf00
+      virtualization: vmware
+      operatingSystem: CentOS Linux 7 (Core)
+      cpeOsName: cpe:/o:centos:centos:7
+      kernel: Linux 4.4.220-1.el7.elrepo.x86_64
+      architecture: x86-64
+
+    ---
+    # 通用配置的特定的profile的配置，第三优先级
+    spring:
+      profiles: development
+    demo:
+      staticHostname: k8s-master-common-config-development
+      iconName: computer-vm
+      chassis: vm
+      machineId: 60943b8b8b72471c82b7e50337e0ab9e
+      bootId: d5e57a99d1f64214a53f7954567ebf00
+      virtualization: vmware
+      operatingSystem: CentOS Linux 7 (Core)
+      cpeOsName: cpe:/o:centos:centos:7
+      kernel: Linux 4.4.220-1.el7.elrepo.x86_64
+      architecture: x86-64
+
+    ---
+    spring:
+      profiles: production
+    demo:
+      staticHostname: k8s-master-common-config-production
       iconName: computer-vm
       chassis: vm
       machineId: 60943b8b8b72471c82b7e50337e0ab9e
