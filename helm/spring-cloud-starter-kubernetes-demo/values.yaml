@@ -1,2 +1,5 @@
 LoadBalancer:
   port: 80
+spring:
+  profiles:
+    active: production

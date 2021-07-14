@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: spring-cloud-starter-kubernetes-demo
 data:
-  spring.profiles.active: production
+  spring.profiles.active: {{ .Values.spring.profiles.active }}
   application.yaml: |-
     management:
       endpoints:
