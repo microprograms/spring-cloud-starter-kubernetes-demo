@@ -5,9 +5,8 @@ metadata:
   # annotations:
   #   metallb.universe.tf/address-pool: default
 spec:
-  type: LoadBalancer
   selector:
     app: spring-cloud-starter-kubernetes-demo
   ports:
-    - port: {{ .Values.LoadBalancer.port }}
+    - port: 80
       targetPort: 8080

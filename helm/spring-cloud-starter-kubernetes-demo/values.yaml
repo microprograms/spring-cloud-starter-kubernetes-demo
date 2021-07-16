@@ -1,5 +1,5 @@
-LoadBalancer:
-  port: 80
+ingress:
+  class: nginx
 spring:
   profiles:
     active: production
