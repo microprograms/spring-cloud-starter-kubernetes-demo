@@ -17,7 +17,7 @@ spec:
       serviceAccount: spring-cloud-starter-kubernetes-demo
       containers:
         - name: spring-cloud-starter-kubernetes-demo
-          image: microprograms/spring-cloud-starter-kubernetes-demo:2.0.1
+          image: microprograms/spring-cloud-starter-kubernetes-demo:2.0.10
           ports:
             - containerPort: 8080
           env:
