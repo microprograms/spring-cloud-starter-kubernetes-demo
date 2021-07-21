@@ -18,11 +18,16 @@ spec:
       containers:
         - name: spring-cloud-starter-kubernetes-demo
           image: microprograms/spring-cloud-starter-kubernetes-demo:2.0.12
+          resources:
+            limits:
+              memory: "128Mi"
+            requests:
+              memory: "128Mi"
           ports:
             - containerPort: 8080
           env:
             - name: JAVA_OPTS
-              value: -XX:+UseContainerSupport -XX:MaxRAMPercentage=80.0 -XX:InitialRAMPercentage=75.0
+              value: -XX:+UseContainerSupport -XX:MaxRAMPercentage=100.0 -XX:InitialRAMPercentage=75.0
             - name: SPRING_PROFILES_ACTIVE
               valueFrom:
                 configMapKeyRef:
