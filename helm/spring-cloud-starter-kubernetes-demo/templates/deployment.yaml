@@ -20,9 +20,9 @@ spec:
           image: microprograms/spring-cloud-starter-kubernetes-demo:2.0.12
           resources:
             limits:
-              memory: "128Mi"
+              memory: "256Mi"
             requests:
-              memory: "128Mi"
+              memory: "256Mi"
           ports:
             - containerPort: 8080
           env:
