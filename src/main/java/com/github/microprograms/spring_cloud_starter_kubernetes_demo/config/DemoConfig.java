@@ -1,4 +1,4 @@
-package com.github.microprograms.spring_cloud_starter_kubernetes_demo;
+package com.github.microprograms.spring_cloud_starter_kubernetes_demo.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
