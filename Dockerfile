@@ -7,7 +7,7 @@
 # JCL      - 2a5e268814 based on jdk8u292-b10)
 FROM adoptopenjdk:8-jre-openj9
 
-COPY target/spring-cloud-starter-kubernetes-demo-2.2.2.jar app.jar
+COPY target/spring-cloud-starter-kubernetes-demo-2.2.5.jar app.jar
 
 EXPOSE 8080
 

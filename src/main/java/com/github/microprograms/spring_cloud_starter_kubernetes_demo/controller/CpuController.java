@@ -17,13 +17,12 @@ public class CpuController {
             new SynchronousQueue<Runnable>()); // 容量为1的线程池
 
     @RequestMapping("/startCalc")
-
     public String startCalc() {
         try {
             executorService.submit(() -> {
                 while (!Thread.interrupted()) {
                     while (true) {
-                        System.out.println(Math.pow(Math.PI, new Random().nextDouble()));
+                        Math.pow(Math.PI, new Random().nextDouble());
                     }
                 }
             });
