@@ -17,7 +17,7 @@ spec:
       serviceAccount: spring-cloud-starter-kubernetes-demo
       containers:
         - name: spring-cloud-starter-kubernetes-demo
-          image: microprograms/spring-cloud-starter-kubernetes-demo:2.2.5
+          image: microprograms/spring-cloud-starter-kubernetes-demo:2.2.7
           resources:
             limits:
               memory: "256Mi"

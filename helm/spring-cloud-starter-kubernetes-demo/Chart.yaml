@@ -3,4 +3,4 @@ appVersion: 2.2.7
 name: spring-cloud-starter-kubernetes-demo
 description: A Helm chart for Kubernetes
 type: application
-version: 2.2.7-r202107221352
+version: 2.2.7-r202107221402
