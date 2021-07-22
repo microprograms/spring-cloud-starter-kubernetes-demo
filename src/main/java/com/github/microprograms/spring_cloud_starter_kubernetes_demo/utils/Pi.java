@@ -4,7 +4,7 @@ public class Pi {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        double pi = grid_pi(Integer.MAX_VALUE);
+        double pi = grid_pi(999999999);
         long end = System.currentTimeMillis();
         System.out.println(String.format("grid_pi, result=%s, cost=%sms", pi, end - start));
     }

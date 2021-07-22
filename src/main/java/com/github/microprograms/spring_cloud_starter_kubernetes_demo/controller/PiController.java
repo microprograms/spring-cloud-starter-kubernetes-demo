@@ -17,23 +17,27 @@ public class PiController {
     private ExecutorService executorService = Executors.newCachedThreadPool();
 
     @RequestMapping("/gridPi")
-    public String gridPi() {
+    public String gridPi(Integer n) {
+        if (null == n) {
+            n = 999999999;
+        }
         Map<String, Object> map = new HashMap<>();
         map.put("start", System.currentTimeMillis());
-        map.put("pi", Pi.grid_pi(Integer.MAX_VALUE));
+        map.put("pi", Pi.grid_pi(n));
         map.put("end", System.currentTimeMillis());
         map.put("cost", (long) map.get("end") - (long) map.get("start"));
+        System.out.println(JSON.toJSONString(map));
         return JSON.toJSONString(map);
     }
 
     @RequestMapping("/startCalc")
-    public String startCalc(Integer repeat) {
+    public String startCalc(Integer n, Integer repeat) {
         if (null == repeat) {
             repeat = 1;
         }
         for (int i = 0; i < repeat; i++) {
             executorService.submit(() -> {
-                return Pi.grid_pi(Integer.MAX_VALUE);
+                gridPi(n);
             });
         }
         return "success";
