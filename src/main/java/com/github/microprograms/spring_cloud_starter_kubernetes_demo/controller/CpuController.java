@@ -31,7 +31,7 @@ public class CpuController {
                 }
                 log.info("interrupted");
             });
-            log.info("success");
+            log.info("startCalc");
             return "success";
         } catch (RejectedExecutionException e) {
             log.info("already started");
@@ -42,8 +42,8 @@ public class CpuController {
     @RequestMapping("/stopCalc")
     public String stopCalc() {
         executorService.shutdownNow();
-        log.info("shutdown now");
-        return "shutdown now";
+        log.info("stopCalc");
+        return "success";
     }
 
 }

@@ -22,10 +22,10 @@ public class PiController {
 
     @RequestMapping("/gridPi")
     public String gridPi(Integer n) {
-        log.info("gridPi, n={}, calc...", n);
         if (null == n) {
             n = 999999999;
         }
+        log.info("gridPi, n={}, calc...", n);
         Map<String, Object> map = new HashMap<>();
         map.put("start", System.currentTimeMillis());
         map.put("pi", Pi.grid_pi(n));
@@ -46,15 +46,15 @@ public class PiController {
                 gridPi(n);
             });
         }
-        log.info("success");
+        log.info("startCalc");
         return "success";
     }
 
     @RequestMapping("/stopCalc")
     public String stopCalc() {
         executorService.shutdownNow();
-        log.info("shutdown now");
-        return "shutdown now";
+        log.info("stopCalc");
+        return "success";
     }
 
 }

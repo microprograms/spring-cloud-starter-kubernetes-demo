@@ -7,10 +7,10 @@
 # JCL      - 2a5e268814 based on jdk8u292-b10)
 FROM adoptopenjdk:8-jre-openj9
 
-COPY target/spring-cloud-starter-kubernetes-demo-2.2.10.jar spring-cloud-starter-kubernetes-demo-2.2.10.jar
+COPY target/spring-cloud-starter-kubernetes-demo-2.2.12.jar spring-cloud-starter-kubernetes-demo-2.2.12.jar
 
 EXPOSE 8080
 
 ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=80.0 -XX:InitialRAMPercentage=75.0"
 
-ENTRYPOINT java ${JAVA_OPTS} -jar spring-cloud-starter-kubernetes-demo-2.2.10.jar
+ENTRYPOINT java ${JAVA_OPTS} -jar spring-cloud-starter-kubernetes-demo-2.2.12.jar
