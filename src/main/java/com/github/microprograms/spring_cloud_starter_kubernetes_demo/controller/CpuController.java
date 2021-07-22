@@ -7,12 +7,16 @@ import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/cpu")
 public class CpuController {
+    private static final Logger log = LoggerFactory.getLogger(CpuController.class);
+
     private ExecutorService executorService = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS,
             new SynchronousQueue<Runnable>()); // 容量为1的线程池
 
@@ -22,12 +26,15 @@ public class CpuController {
             executorService.submit(() -> {
                 while (!Thread.interrupted()) {
                     while (true) {
-                        Math.pow(Math.PI, new Random().nextDouble());
+                        log.info("result={}", Math.pow(Math.PI, new Random().nextDouble()));
                     }
                 }
+                log.info("interrupted");
             });
+            log.info("success");
             return "success";
         } catch (RejectedExecutionException e) {
+            log.info("already started");
             return "already started";
         }
     }
@@ -35,6 +42,7 @@ public class CpuController {
     @RequestMapping("/stopCalc")
     public String stopCalc() {
         executorService.shutdownNow();
+        log.info("shutdown now");
         return "shutdown now";
     }
 
