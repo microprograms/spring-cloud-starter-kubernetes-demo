@@ -6,5 +6,29 @@ spec:
   selector:
     app: spring-cloud-starter-kubernetes-demo
   ports:
-    - port: 80
+    - port: 8080
+      targetPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-cloud-starter-kubernetes-demo-srv-a
+spec:
+  selector:
+    app: spring-cloud-starter-kubernetes-demo-srv-a
+  ports:
+    - port: 8080
+      targetPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-cloud-starter-kubernetes-demo-srv-b
+spec:
+  selector:
+    app: spring-cloud-starter-kubernetes-demo-srv-b
+  ports:
+    - port: 8080
       targetPort: 8080

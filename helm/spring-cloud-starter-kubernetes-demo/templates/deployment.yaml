@@ -14,10 +14,9 @@ spec:
       labels:
         app: spring-cloud-starter-kubernetes-demo
     spec:
-      serviceAccount: spring-cloud-starter-kubernetes-demo
       containers:
         - name: spring-cloud-starter-kubernetes-demo
-          image: microprograms/spring-cloud-starter-kubernetes-demo:2.2.12
+          image: microprograms/spring-cloud-starter-kubernetes-demo:2.2.15
           resources:
             limits:
               memory: "256Mi"
@@ -31,5 +30,67 @@ spec:
             - name: SPRING_PROFILES_ACTIVE
               valueFrom:
                 configMapKeyRef:
-                  name: spring-cloud-starter-kubernetes-demo
+                  name: spring-cloud-starter-kubernetes-demo-config
                   key: spring.profiles.active
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-cloud-starter-kubernetes-demo-srv-a
+  labels:
+    app: spring-cloud-starter-kubernetes-demo-srv-a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-cloud-starter-kubernetes-demo-srv-a
+  template:
+    metadata:
+      labels:
+        app: spring-cloud-starter-kubernetes-demo-srv-a
+    spec:
+      containers:
+        - name: spring-cloud-starter-kubernetes-demo-srv-a
+          image: microprograms/spring-cloud-starter-kubernetes-demo-srv-a:1.0.0
+          resources:
+            limits:
+              memory: "256Mi"
+            requests:
+              memory: "256Mi"
+          ports:
+            - containerPort: 8080
+          env:
+            - name: JAVA_OPTS
+              value: -XX:+UseContainerSupport -XX:MaxRAMPercentage=100.0 -XX:InitialRAMPercentage=75.0
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-cloud-starter-kubernetes-demo-srv-b
+  labels:
+    app: spring-cloud-starter-kubernetes-demo-srv-b
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-cloud-starter-kubernetes-demo-srv-b
+  template:
+    metadata:
+      labels:
+        app: spring-cloud-starter-kubernetes-demo-srv-b
+    spec:
+      containers:
+        - name: spring-cloud-starter-kubernetes-demo-srv-b
+          image: microprograms/spring-cloud-starter-kubernetes-demo-srv-b:1.0.0
+          resources:
+            limits:
+              memory: "256Mi"
+            requests:
+              memory: "256Mi"
+          ports:
+            - containerPort: 8080
+          env:
+            - name: JAVA_OPTS
+              value: -XX:+UseContainerSupport -XX:MaxRAMPercentage=100.0 -XX:InitialRAMPercentage=75.0

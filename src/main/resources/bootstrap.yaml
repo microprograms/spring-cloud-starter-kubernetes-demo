@@ -7,4 +7,4 @@ spring:
       config:
         sources:
           - name: common-config
-          - name: spring-cloud-starter-kubernetes-demo
+          - name: spring-cloud-starter-kubernetes-demo-config

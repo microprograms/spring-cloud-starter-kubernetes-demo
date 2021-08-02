@@ -14,4 +14,18 @@ spec:
               service:
                 name: spring-cloud-starter-kubernetes-demo
                 port:
-                  number: 80
+                  number: 8080
+          - path: /pi
+            pathType: Prefix
+            backend:
+              service:
+                name: spring-cloud-starter-kubernetes-demo-srv-a
+                port:
+                  number: 8080
+          - path: /math
+            pathType: Prefix
+            backend:
+              service:
+                name: spring-cloud-starter-kubernetes-demo-srv-b
+                port:
+                  number: 8080
